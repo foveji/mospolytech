@@ -1,0 +1,71 @@
+# 1. Вывод чисел от 1 до n
+def print_numbers(n):
+    def helper(current):
+        if current > n:
+            return
+        print(current)
+        helper(current + 1)
+    
+    helper(1)
+
+# Тест
+n = int(input())
+print_numbers(n)
+
+# 2. Вывод чисел от A до B
+def print_range_desc(a, b):
+    def helper(current):
+        print(current)
+        if current > a:
+            helper(current - 1)
+    
+    def helper_reverse(current):
+        if current < b:
+            helper_reverse(current + 1)
+        print(current)
+    
+    if a >= b:
+        helper(a)  # от большего к меньшему
+    else:
+        helper_reverse(a)  # рекурсивно доходим до b, потом выводим в обратном порядке
+
+# Тест
+A = int(input())
+B = int(input())
+print_range_desc(A, B)
+
+# 3. Сумма цифр числа 
+def sum_digits(n):
+    if n < 10:
+        return n
+    return n % 10 + sum_digits(n // 10)
+
+# Тест
+N = int(input())
+print(sum_digits(N))
+
+# 4. Простые делители числа в порядке возрастания
+def prime_divisors(n, divisor=2):
+    # Базовый случай
+    if n == 1:
+        return
+    
+    # Если делитель больше корня из n, то n - простое число
+    if divisor * divisor > n:
+        print(n)
+        return
+    
+    # Если n делится на текущий делитель
+    if n % divisor == 0:
+        print(divisor)
+        # Делим n на divisor пока делится
+        while n % divisor == 0:
+            n = n // divisor
+        prime_divisors(n, divisor + 1)
+    else:
+        # Переходим к следующему делителю
+        prime_divisors(n, divisor + 1)
+
+# Тест
+N = int(input())
+prime_divisors(N)
