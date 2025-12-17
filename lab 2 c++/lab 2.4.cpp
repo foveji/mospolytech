@@ -20,6 +20,6 @@ int fourth_func() {
 	staticFunction(3);
 
 	int result = SUM(7, 8);
-	cout << "����� ����� ������ SUM: " << result << endl;
+	cout << "Ñóììà ÷åðåç ìàêðîñ SUM: " << result << endl;
 
 }
